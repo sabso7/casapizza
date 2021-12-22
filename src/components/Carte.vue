@@ -1,50 +1,48 @@
 <template>
-<v-main>
-    <v-card>
-        <v-card-title class="text-center block_titre justify-center py-6">
-            <v-container fluid>
-                <v-row align="center" justify="center">
-                    <h3 class="text_white pb-3">3 PIZZAS AU FROMAGE = 20€</h3>
-                </v-row>
-                <span class="horizontal-line fade_in rigth"></span>
-                <v-row align="center" justify="center">
-                    <h3 class="text_white pt-5">3 PIZZAS ACHETÉES = 1 BOUTEILLE DE SODA 1,5L OFFERTE*</h3>
-                </v-row>
-                <v-row align="center" justify="center">
-                    <h5 class="text_white">(*HORS FORMULE 3 PIZZAS AU FROMAGE À 20€)</h5>
-                </v-row>
+<v-main class="home_block">
+    <v-container class="block_carte" fluid>
+        <v-card flat color="transparent">
+            <v-card-title no-gutters class="text-center justify-center pa-0">
+                <v-container fluid no-gutters>
+                    <v-row align="center" justify="center">
+                        <h1 class="text_white title_carte ma-4 pa-5" :class="$mq">CARTE</h1>
+                    </v-row>
+                    <span class="horizontal-line fade_in rigth"></span>
+                </v-container>
+            </v-card-title>
+            <v-tabs v-model="tab" color="orange" grow>
+                <v-tab class="title_tab fade_in right" v-for="(type,index) in types" :key="index">
+                    <h4 style="color:black;">{{ type.mainTitle }}</h4>
+                </v-tab>
+            </v-tabs>
+            <v-tabs-items class="background_site" v-model="tab">
+                <template class="background_site">
+                    <v-list class="background_site" v-for="type in types[tab]" :key="type.mainTitle" three-line>
+                        <v-container v-if="isObject(type)" class="container_carte" fluid>
+                            <v-list-item v-for="carte in type" :key="carte.title">
+                                <v-list-item-content>
+                                    <v-list-item-title class="text_white text_uppercase">{{carte.title}}</v-list-item-title>
+                                    <v-divider></v-divider>
+                                    <v-list-item-subtitle class="text_white">
+                                        <p class="carte_subtitle">{{carte.subtitle}}</p>
+                                    </v-list-item-subtitle>
+                                </v-list-item-content>
+                                <v-list-item-action class="text_white">
+                                    <p>{{carte.price}}</p>
+                                </v-list-item-action>
+                            </v-list-item>
+                        </v-container>
+                    </v-list>
+                </template>
+            </v-tabs-items>
+            <v-container class="background_site pa-5" fluid>
+                <v-row class="text_info text_white text_uppercase" :class="$mq" align="start" justify="center">MOZZARELLA FIOR DI LATTE (“Fleur de lait” en français) : Mozzarella de qualité supérieure</v-row>
+                <v-row class="text_info text_white text_uppercase" :class="$mq" align="start" justify="center">GUANCIALE : Viande séchée issue de la joue du cochon</v-row>
+                <v-row class="text_info text_white text_uppercase" :class="$mq" align="start" justify="center">BURRATA : Fromage frais Italien, proche de la Mozzarella</v-row>
+                <v-row class="text_info text_white text_uppercase" :class="$mq" align="start" justify="center">VIANDES DE POULET ET DE BOEUF HALAL, OEUFS et LÉGUMES BIO</v-row>
             </v-container>
-        </v-card-title>
-        <v-tabs v-model="tab" background-color="transparent" color="orange" grow>
-            <v-tab class="title_tab fade_in right" v-for="(type,index) in types" :key="index">
-                {{ type.mainTitle }}
-            </v-tab>
-        </v-tabs>
-        <v-tabs-items v-model="tab">
-            <template>
-                <v-list v-for="type in types[tab]" :key="type.mainTitle" class="list_carte" three-line>
-                    <v-container v-if="isObject(type)" class="container_carte" fluid>
-                        <v-list-item v-for="carte in type" :key="carte.title">
-                            <v-list-item-content>
-                                <v-list-item-title class="text_white text_uppercase">{{carte.title}}</v-list-item-title>
-                                <v-divider></v-divider>
-                                <v-list-item-subtitle class="text_white">{{carte.subtitle}}</v-list-item-subtitle>
-                            </v-list-item-content>
-                            <v-list-item-action class="text_white">
-                                {{carte.price}}
-                            </v-list-item-action>
-                        </v-list-item>
-                    </v-container>
-                </v-list>
-            </template>
-        </v-tabs-items>
-        <v-container class="list_carte pa-7" fluid>
-            <v-row class="text_info text_white text_uppercase" align="center" justify="center">MOZZARELLA FIOR DI LATTE (“Fleur de lait” en français) : Mozzarella de qualité supérieure</v-row>
-            <v-row class="text_info text_white text_uppercase" align="center" justify="center">GUANCIALE : Viande séchée issue de la joue du cochon</v-row>
-            <v-row class="text_info text_white text_uppercase" align="center" justify="center">BURRATA : Fromage frais Italien, proche de la Mozzarella</v-row>
-            <v-row class="text_info text_white text_uppercase" align="center" justify="center">VIANDES DE POULET ET DE BOEUF HALAL, OEUFS et LÉGUMES BIO</v-row>
-        </v-container>
-    </v-card>
+        </v-card>
+    </v-container>
 </v-main>
 </template>
 
@@ -160,7 +158,7 @@ export default {
                     },
                     {
                         title: 'Poulet',
-                        subtitle: 'Crème fraîche, Poulet, Oignons confits, Mozzarella Fior Di Latte, Persillade ou Curry',
+                        subtitle: 'Crème fraîche, Poulet, Oignons confits, Mozzarella Fior Di Latte, Pesto ou Curry',
                         price: '12,00€'
                     },
                     {
@@ -179,7 +177,7 @@ export default {
                 mainTitle: 'CALZONES',
                 cartes: [{
                         title: 'Classique',
-                        subtitle: 'Sauce tomate ou Creme fraiche, Jambon Blanc, Champignons, Oeuf, Mozzarella Fior Di Latte',
+                        subtitle: 'Sauce tomate ou Crème fraiche, Jambon Blanc, Champignons, Oeuf, Mozzarella Fior Di Latte',
                         price: '12,00€'
                     },
                     {
@@ -237,6 +235,20 @@ export default {
                     }
                 ]
             },
+            {
+                mainTitle: 'OFFRE SPÉCIALE',
+                cartes: [{
+                        title: '3 PIZZAS AU FROMAGE = 20€',
+                        subtitle: '',
+                        price: ''
+                    },
+                    {
+                        title: "3 PIZZAS ACHETÉES = 1 BOUTEILLE DE SODA 1,5L OFFERTE*",
+                        subtitle: '(*HORS FORMULE 3 PIZZAS AU FROMAGE À 20€)',
+                        price: ''
+                    }
+                ],
+            },
         ]
     }),
     methods: {
@@ -257,22 +269,17 @@ export default {
 }
 
 .block_carte {
-    background-color: black;
-}
-
-.block_titre{
-    background-color: black;
+    border-top: 2px solid orange;
 }
 
 .title_carte {
-    margin: 5%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Rubik', sans-serif;
     border: 2px solid whitesmoke;
-    padding: 1%;
 }
 
-.list_carte {
-    background-color: black!important;
+.title_carte.sm {
+    font-size: 1.2em;
+    padding: 6px !important;
 }
 
 .text_uppercase {
@@ -281,12 +288,20 @@ export default {
     font-weight: 900;
 }
 
-.title_tab {
-    color: black;
-}
-
 .text_info {
     font-style: italic;
     font-size: 0.7em !important;
+}
+
+.text_info.sm {
+    font-size: 0.5em !important;
+}
+
+.carte_subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 </style>
