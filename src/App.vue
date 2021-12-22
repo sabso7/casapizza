@@ -41,7 +41,7 @@
                 <span class="text_white">Sabso &copy; {{ new Date().getFullYear() }}</span>
                 <v-spacer></v-spacer>
                 <span class="logo-footer">
-                    <v-btn rel="noopener" aria-label="go to facebook" icon href="" target="_blank">
+                    <v-btn rel="noopener" aria-label="go to facebook" icon href="https://www.facebook.com/profile.php?id=100073294883708" target="_blank">
                         <v-icon class="icon" color="white">mdi-facebook</v-icon>
                     </v-btn>
                 </span>

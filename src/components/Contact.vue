@@ -30,7 +30,9 @@
                         <h2 class="text_white text_contact" :class="$mq">21 RUE DANTON 84120 PERTUIS</h2>
                     </v-row>
                     <v-row align="center" justify="center">
-                        <v-icon color="white" class="ma-2">mdi-facebook</v-icon>
+                        <v-btn rel="noopener" aria-label="go to facebook" icon href="https://www.facebook.com/profile.php?id=100073294883708" target="_blank">
+                            <v-icon color="white" class="ma-2">mdi-facebook</v-icon>
+                        </v-btn>
                     </v-row>
                     <v-row align="center" justify="center">
                         <h2 class="text_white text_contact mb-3" :class="$mq">CASA PIZZA PERTUIS</h2>
@@ -53,7 +55,9 @@
                         <h2 class="text_white text_contact" :class="$mq">21 RUE DANTON 84120 PERTUIS</h2>
                     </v-row>
                     <v-row class="ma-4" align="center" justify="center">
-                        <v-icon x-medium class="icon mr-3" color="white">mdi-facebook</v-icon>
+                        <v-btn rel="noopener" aria-label="go to facebook" icon href="https://www.facebook.com/profile.php?id=100073294883708" target="_blank">
+                            <v-icon x-medium class="icon mr-3" color="white">mdi-facebook</v-icon>
+                        </v-btn>
                         <h2 class="text_white text_contact" :class="$mq">CASA PIZZA PERTUIS</h2>
                     </v-row>
                 </v-container>

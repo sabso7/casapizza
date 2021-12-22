@@ -5,7 +5,7 @@
             <v-card-title no-gutters class="text-center justify-center pa-0">
                 <v-container fluid no-gutters>
                     <v-row align="center" justify="center">
-                        <h1 class="text_white title_carte ma-4 pa-5" :class="$mq">CARTE</h1>
+                        <h1 class="text_white big_title_carte ma-4 pa-5" :class="$mq">CARTE</h1>
                     </v-row>
                     <span class="horizontal-line fade_in rigth"></span>
                 </v-container>
@@ -21,7 +21,7 @@
                         <v-container v-if="isObject(type)" class="container_carte" fluid>
                             <v-list-item v-for="carte in type" :key="carte.title">
                                 <v-list-item-content>
-                                    <v-list-item-title class="text_white text_uppercase">{{carte.title}}</v-list-item-title>
+                                    <v-list-item-title class="carte_title text_white text_uppercase">{{carte.title}}</v-list-item-title>
                                     <v-divider></v-divider>
                                     <v-list-item-subtitle class="text_white">
                                         <p class="carte_subtitle">{{carte.subtitle}}</p>
@@ -272,12 +272,12 @@ export default {
     border-top: 2px solid orange;
 }
 
-.title_carte {
+.big_title_carte {
     font-family: 'Rubik', sans-serif;
     border: 2px solid whitesmoke;
 }
 
-.title_carte.sm {
+.big_title_carte.sm {
     font-size: 1.2em;
     padding: 6px !important;
 }
@@ -295,13 +295,19 @@ export default {
 
 .text_info.sm {
     font-size: 0.5em !important;
+    text-align: left !important;
+    display: contents !important;
 }
 
 .carte_subtitle {
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 6 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.carte_title {
+    white-space: normal !important;
 }
 </style>
